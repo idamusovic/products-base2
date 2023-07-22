@@ -19,6 +19,13 @@ export class ProductViewComponent implements OnInit{
 
   ngOnInit(): void {
     
+    this.product = {
+      id: this.route.snapshot.params['id'],
+      name: 'name',
+      price: 2,
+      description: '234',
+      imageUrl: '423'
+    }
     const productId = this.route.snapshot.params['id'];
 
     this.productService.get(parseInt(productId, 10)).subscribe((product) => {
