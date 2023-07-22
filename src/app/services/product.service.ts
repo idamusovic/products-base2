@@ -34,7 +34,11 @@ export class ProductService {
   //   return this.products;
   // }
   list(): Product[] {
+    fetch(this.url).then(res => res.json())
+    .then(console.log);
+
     return this.products;
+    
   }
 
   // get(id: number){    

@@ -10,7 +10,7 @@ import { Product } from 'src/app/product.model';
 })
 export class ProductListItemComponent implements OnInit {
 
-  product: Product = { id: 0, name: '', price: 0, description: '', imageUrl: '' };
+  product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
 
   constructor(){
 

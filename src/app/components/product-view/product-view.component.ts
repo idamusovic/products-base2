@@ -10,7 +10,7 @@ import {ProductService} from '../../services/product.service';
 })
 export class ProductViewComponent implements OnInit{
 
-  product: Product = { id: 0, name: '', price: 0, description: '', imageUrl: '' };
+  product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService){
@@ -21,10 +21,10 @@ export class ProductViewComponent implements OnInit{
     
     this.product = {
       id: this.route.snapshot.params['id'],
-      name: 'name',
-      price: 2,
-      description: '234',
-      imageUrl: '423'
+      title: '',
+      price: 0,
+      description: '',
+      images: ''
     }
     const productId = this.route.snapshot.params['id'];
 
