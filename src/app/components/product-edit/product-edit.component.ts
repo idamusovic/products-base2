@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,6 +15,8 @@ export class ProductEditComponent {
 
   product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
   inputValue: string ='';
+
+  // editForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService){
