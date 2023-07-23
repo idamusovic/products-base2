@@ -38,8 +38,12 @@
                 <div class="col-md-4" *ngFor="let product of products">
                     <div class="card" style="width: 27rem; margin: 10px;
                      ">
+                     
                         <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}"
+                        
                         />
+                     
+                        
                         <div class="card-body">
                             <h4 style="font-weight: bold;">{{ product.title }}</h4>
                             <p><span style="font-weight: bold;">Description:</span> {{ product.description }}</p>
