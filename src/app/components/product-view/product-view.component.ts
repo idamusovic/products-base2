@@ -32,4 +32,8 @@ export class ProductViewComponent implements OnInit{
       this.product = product;
     });
   }
+
+  onDeleteProduct(id:number){
+    this.productService.delete(id).unsubscribe();
+  }
 }

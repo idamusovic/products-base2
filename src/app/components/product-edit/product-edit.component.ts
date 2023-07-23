@@ -55,7 +55,7 @@ export class ProductEditComponent implements OnInit{
   }
 
   onUpdateProduct(){
-    console.log(this.inputValue);
+    this.productService.update(this.index,this.product).subscribe();
     alert("Changes saved")
   }
   onDeleteProduct(id:number){

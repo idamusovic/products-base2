@@ -75,7 +75,7 @@ add(product: Product): Observable<Product> {
 update(id: number, product: Product) {
   this.products[id] = product;
   return this.httpClient
-    .patch<Product>('https://dummyjson.com/products/' + (id + 1), product)
+    .patch<Product>('https://dummyjson.com/products/' + (id+1), product)
     .pipe(
       map((response: Product) => {
         fetch('https://dummyjson.com/products/' + (id + 1), {
@@ -100,8 +100,8 @@ update(id: number, product: Product) {
 delete(id: number) {
   console.log("deleted");
   const deleteUrl = 'https://dummyjson.com/products/' + id;
-  const indexToRemove = this.products.indexOf(this.products[id]) - 1;
-  this.products.splice(indexToRemove, 1);
+  const del = this.products.indexOf(this.products[id - 1]) ;
+  this.products.splice(del, 1);
 
   return this.httpClient.delete(deleteUrl).subscribe(() => {
     fetch(deleteUrl, {
