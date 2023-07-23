@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { ProductListItemComponent } from './components/product-list-item/product
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

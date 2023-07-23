@@ -6,7 +6,7 @@
 <div class="container">
     
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-8">
             
             <div class="card" style="width: 27rem; margin: 10px;">
                 <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}" />
@@ -15,14 +15,15 @@
                   <h4 style="font-weight: bold;">{{ product.title }}</h4>
                   <p><span style="font-weight: bold;">Description:</span> {{ product.description }}</p>
                   <p><span style="font-weight: bold;">Price:</span> {{ product.price }}</p>
-                  <button [routerLink]="['/']" class="btn btn-outline-success">Go Back</button>
+                  <button routerLink="/" class="btn btn-outline-success">Go Back</button>
                   <button [routerLink]="['/edit',product.id]" class="btn btn-outline-primary">Edit</button>
-                  <button [routerLink]="['/']" class="btn btn-outline-danger" >Delete</button>
+                  <button [routerLink]="[product.id]" class="btn btn-outline-danger" >Delete</button>
                 </div>
                 
               </div>
             
         </div>
+        
     </div>
 </div>
   
