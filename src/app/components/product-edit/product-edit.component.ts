@@ -13,6 +13,7 @@ export class ProductEditComponent {
 
 
   product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
+  inputValue: string ='';
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService){
@@ -33,5 +34,14 @@ export class ProductEditComponent {
         this.product = product;
       });
   }
+
+  onUpdateProduct(){
+    console.log(this.inputValue);
+    alert("Changes saved")
+  }
+  onDeleteProduct(){
+    alert("Product deleted!")
+  }
+  
   
 }
