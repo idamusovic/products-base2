@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -13,13 +13,15 @@ export class ProductEditComponent implements OnInit{
 
 
 
+  index!: number;
   product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
   inputValue: string ='';
 
   editForm!: FormGroup;
 
   constructor(private route: ActivatedRoute,
-    private productService: ProductService){
+    private productService: ProductService,
+    private router: Router,){
 
       
   }
@@ -45,12 +47,19 @@ export class ProductEditComponent implements OnInit{
       });
   }
 
+  onSubmit(){
+    console.log(this.editForm);
+
+    this.productService.update(this.index, this.editForm.value).subscribe();
+    this.router.navigate(['../../']);
+  }
+
   onUpdateProduct(){
     console.log(this.inputValue);
     alert("Changes saved")
   }
-  onDeleteProduct(){
-    alert("Product deleted!")
+  onDeleteProduct(id:number){
+    this.productService.delete(id).unsubscribe();
   }
   
   

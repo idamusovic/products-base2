@@ -67,31 +67,50 @@ add(product: Product): Observable<Product> {
   return this.httpClient.post<Product>(this.url, product);
 }
 
-//   update(id: number, product: any){
-//     fetch(this.url + '/1', {
-//       method: 'PUT', /* or PATCH */
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({
-//       title: 'iPhone Galaxy +1'
-//     })
-//   })
-//     .then(res => res.json())
-//     .then(console.log);
+
+// update(id: number, product: Product): Observable<Product> {
+//   return this.httpClient.put<Product>(`${this.url}/${id}`, product);
 // }
 
-update(id: number, product: Product): Observable<Product> {
-  return this.httpClient.put<Product>(`${this.url}/${id}`, product);
+update(id: number, product: Product) {
+  this.products[id] = product;
+  return this.httpClient
+    .patch<Product>('https://dummyjson.com/products/' + (id + 1), product)
+    .pipe(
+      map((response: Product) => {
+        fetch('https://dummyjson.com/products/' + (id + 1), {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: response.title,
+            price: response.price,
+            description: response.description
+            
+          }),
+        })
+          .then((res) => res.json())
+          .then(console.log);
+      })
+    );
 }
 
-  // delete(id: number){
-  //   fetch(this.url, {
-  //     method: 'DELETE',
-  //   })
-  //   .then(res => res.json())
-  //   .then(console.log);
-  // }
 
-  delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.url}/${id}`);
-  }
+
+
+delete(id: number) {
+  console.log("deleted");
+  const deleteUrl = 'https://dummyjson.com/products/' + id;
+  const indexToRemove = this.products.indexOf(this.products[id]) - 1;
+  this.products.splice(indexToRemove, 1);
+
+  return this.httpClient.delete(deleteUrl).subscribe(() => {
+    fetch(deleteUrl, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then(console.log);
+  });
+}
+
+ 
 }
