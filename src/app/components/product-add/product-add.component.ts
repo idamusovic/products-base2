@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/services/product.service';
@@ -15,7 +15,7 @@ export class ProductAddComponent implements OnInit{
   product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
   inputValue: string ='';
 
-  editForm!: FormGroup;
+  addForm!: FormGroup;
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
@@ -37,11 +37,20 @@ export class ProductAddComponent implements OnInit{
     this.productService.get(parseInt(productId, 10)).subscribe((product) => {
       this.product = product;
     });
+
+    this.addForm = new FormGroup({
+      id: new FormControl(null,Validators.required),
+      title: new FormControl(null, Validators.required),
+      price: new FormControl(null, Validators.required),
+      description: new FormControl(null)
+    });
   }
-  
+   
 
   onAddProduct(){
-
+    this.productService.add(this.addForm.value).subscribe();
+    this.addForm.reset();
+    this.router.navigate(['../']);
   };
 
 }

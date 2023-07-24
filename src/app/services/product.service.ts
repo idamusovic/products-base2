@@ -27,12 +27,9 @@ export class ProductService {
       }));
   }
 
-  // list() {  
-  //   fetch(this.url).then(res => res.json())
-  //   .then(console.log);
+  
 
-  //   return this.products;
-  // }
+
   list(): Product[] {
     fetch(this.url).then(res => res.json())
     .then(console.log);
@@ -41,42 +38,44 @@ export class ProductService {
     
   }
 
-  // get(id: number){    
-  //   fetch(this.url + '/id')
-  //   .then(res => res.json())
-  //   .then(console.log);
-                
-  // }
+ 
   
   get(id: number): Observable<Product> {
     return this.httpClient.get<Product>(`${this.url}/${id}`);
   }
 
-//   add(product: any){
-//     fetch(this.url, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       title: 'BMW Pencil',
-//     })
-// })
-// .then(res => res.json())
-// .then(console.log);
-//   }
 
-add(product: Product): Observable<Product> {
-  return this.httpClient.post<Product>(this.url, product);
-}
+  add(product: Product) {
+    product.id = this.products.length + 1;
+    this.products.push(product);
+
+    return this.httpClient
+      .post<Product>('https://dummyjson.com/products/add', product)
+      .pipe(
+        map((response: Product) => {
+          fetch('https://dummyjson.com/products/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: response.title,
+              price: response.price,
+              description: response.description
+            }),
+          })
+            .then((res) => res.json())
+            .then(console.log);
+        })
+      );
+  }
 
 
-// update(id: number, product: Product): Observable<Product> {
-//   return this.httpClient.put<Product>(`${this.url}/${id}`, product);
-// }
+
+
 
 update(id: number, product: Product) {
   this.products[id] = product;
   return this.httpClient
-    .patch<Product>('https://dummyjson.com/products/' + (id+1), product)
+    .patch<Product>('https://dummyjson.com/products/' + (id + 1), product)
     .pipe(
       map((response: Product) => {
         fetch('https://dummyjson.com/products/' + (id + 1), {
@@ -86,7 +85,6 @@ update(id: number, product: Product) {
             title: response.title,
             price: response.price,
             description: response.description
-            
           }),
         })
           .then((res) => res.json())
@@ -99,10 +97,14 @@ update(id: number, product: Product) {
 
 
 delete(id: number) {
+
+  
   console.log("deleted");
   const deleteUrl = 'https://dummyjson.com/products/' + id;
   const del = this.products.indexOf(this.products[id - 1]) ;
   this.products.splice(del, 1);
+
+
 
   return this.httpClient.delete(deleteUrl).subscribe(() => {
     fetch(deleteUrl, {

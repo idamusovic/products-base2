@@ -22,3 +22,11 @@ div.buttons{
     display: flex;
     justify-content: end;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: rgb(57, 85, 137);
+    text-decoration: none;
+}

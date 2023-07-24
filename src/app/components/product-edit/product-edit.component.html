@@ -43,7 +43,7 @@
                   
                   <div class="d-flex input-group mb-3">
                     
-                    <!-- <span style="width: 100px;font-size: 15px;" class="input-group-text">Description</span> -->
+                    
                     <input 
                     style="width: 100px;font-size: 15px;border-radius: 4px;"
                     type="text" class="form-control" 
@@ -57,7 +57,7 @@
                     <span
                     style="width: 25px;font-size: 17px;"  
                     class="input-group-text">$</span>
-                    <!-- <span style="width: 50px;font-size: 15px;" class="input-group-text">{{product.price}}</span> -->
+                    
                     
                     <input 
                     style="width: 100px;font-size: 15px;"
@@ -69,7 +69,7 @@
                     <button routerLink="/" class="btn btn-outline-primary">Go Back</button>
                     <button [routerLink]="['/edit',product.id]" class="btn btn-outline-success"
                     (click)="onUpdateProduct()">Save</button>
-                    <button [routerLink]="[product.id]" class="btn btn-outline-danger" (click)="onDeleteProduct(product.id)">Delete</button>
+                    <button routerLink="/" class="btn btn-outline-danger" (click)="onDeleteProduct(product.id)">Delete</button>
                   </div>
 
                   

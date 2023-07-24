@@ -11,8 +11,6 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductEditComponent implements OnInit{
 
-
-
   index!: number;
   product: Product = { id: 0, title: '', price: 0, description: '', images: '' };
   inputValue: string ='';
@@ -45,22 +43,48 @@ export class ProductEditComponent implements OnInit{
       this.productService.get(parseInt(productId, 10)).subscribe((product) => {
         this.product = product;
       });
+
+      this.onUpdateProduct();
   }
 
   onSubmit(){
     console.log(this.editForm);
 
     this.productService.update(this.index, this.editForm.value).subscribe();
-    this.router.navigate(['../../']);
   }
 
   onUpdateProduct(){
+
+    let newTitle = '';
+    let newPrice = 0;
+    let newDesc = '';
+
+    // newTitle = this.product.title;
+    // newPrice = this.product.price;
+    // newDesc = this.product.description;
+
+
     this.productService.update(this.index,this.product).subscribe();
-    alert("Changes saved")
+    
+
+    this.editForm = new FormGroup({
+      title: new FormControl(newTitle),
+      price: new FormControl(newPrice),
+      description: new FormControl(newDesc),
+    })
   }
+
+ 
+
+  
+
+
+
   onDeleteProduct(id:number){
     this.productService.delete(id).unsubscribe();
   }
   
-  
+ 
+
 }
+
