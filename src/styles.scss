@@ -6,3 +6,14 @@
 button{
     margin: 3px;
 }
+button.add-btn{
+    color: white;
+    background-color: cornflowerblue;
+    border: 1px solid white;
+}
+button.add-btn:hover{
+    
+        color: cornflowerblue;
+        background-color: white;
+      
+}

@@ -47,6 +47,7 @@ export class ProductService {
   //   .then(console.log);
                 
   // }
+  
   get(id: number): Observable<Product> {
     return this.httpClient.get<Product>(`${this.url}/${id}`);
   }

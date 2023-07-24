@@ -25,9 +25,14 @@
 
  -->
  <header 
- class="p-3 mb-2"
- style="background-color: cornflowerblue; color: beige;">
+ 
+ class="p-3 mb-2 d-flex "
+ style="background-color: cornflowerblue; color: beige; justify-content: space-between;">
      <h2 class="m-3">Products</h2>
+     <button 
+     routerLink="/new"
+     class="btn add-btn"
+     >Add a product</button>
 </header>
  <div class="container">
     <div class="row">
@@ -55,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <button routerLink="/new" class="btn btn-outline-success">Add a product</button>
+            
         </div>
     </div>
 </div>

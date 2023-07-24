@@ -22,7 +22,7 @@ export class ProductEditComponent implements OnInit{
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
     private router: Router,){
-
+      
       
   }
 
