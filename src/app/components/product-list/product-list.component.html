@@ -1,29 +1,3 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <header class="p-3 mb-2 bg-dark-subtle text-emphasis-dark">
-                <h2>Products</h2>
-            </header>
-            
-            
-            <ul style="list-style: none;">
-                <li *ngFor="let product of products">
-                    <div class="card" style="width: 18rem; margin: 10px;">
-                        <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}"
-                        style="max-height: 200px;"/>
-                        <div class="card-body">
-                            <h4 style="font-weight: bold;">{{ product.title }}</h4>
-                            <p><span style="font-weight: bold;">Description:</span> {{ product.description }}</p>
-                            <p><span style="font-weight: bold;">Price:</span> {{ product.price }}</p>
-                        </div>
-                </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
- -->
  <header 
  
  class="p-3 mb-2 d-flex "
@@ -53,7 +27,13 @@
                             <h4 style="font-weight: bold;">{{ product.title }}</h4>
                             <p><span style="font-weight: bold;">Description:</span> {{ product.description }}</p>
                             <p><span style="font-weight: bold;">Price:</span> {{ product.price }}</p>
-                            <button [routerLink]="['/',product.id]" class="btn btn-outline-success">View details</button>
+                            
+                            <div class="buttons">
+                                <button [routerLink]="['/',product.id]" class="btn btn-outline-success">View details</button>
+                            </div>
+                            
+
+
                                 <!-- <button [routerLink]="['/edit',product.id]" class="btn btn-outline-primary">Edit</button> -->
                             <!-- <button routerLink="/:id" class="btn btn-outline-danger">Delete</button> -->
                         </div>

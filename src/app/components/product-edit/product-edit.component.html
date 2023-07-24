@@ -64,12 +64,15 @@
                     type="text" class="form-control" 
                     formControlName="price">
                   </div>
-                  <!-- <p><span style="font-weight: bold;">Price:</span> {{ product.price }}</p> -->
+                  
+                  <div class="buttons">
+                    <button routerLink="/" class="btn btn-outline-primary">Go Back</button>
+                    <button [routerLink]="['/edit',product.id]" class="btn btn-outline-success"
+                    (click)="onUpdateProduct()">Save</button>
+                    <button [routerLink]="[product.id]" class="btn btn-outline-danger" (click)="onDeleteProduct(product.id)">Delete</button>
+                  </div>
 
-                  <button routerLink="/" class="btn btn-outline-success">Go Back</button>
-                  <button [routerLink]="['/edit',product.id]" class="btn btn-outline-primary"
-                  (click)="onUpdateProduct()">Save</button>
-                  <button [routerLink]="[product.id]" class="btn btn-outline-danger" (click)="onDeleteProduct(product.id)">Delete</button>
+                  
                 </div>
                 
               </div>
